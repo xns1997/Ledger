@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "b4a036ab-4221-4fd8-82fc-1d61fa4b73f2",
+		"name": "TestScript",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21576279"
+	},
+	"item": [
+		{
+			"name": "Filter",
+			"item": [
+				{
+					"name": "Get-Content-Of-A-Year",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{filter}}/?start=1640966400000&end=1672502399999",
+							"protocol": "http",
+							"host": [
+								"{{filter}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1640966400000"
+								},
+								{
+									"key": "end",
+									"value": "1672502399999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Content-Of-A-Month",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{filter}}?start=1654012800000&end=1656604799999",
+							"protocol": "http",
+							"host": [
+								"{{filter}}"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1654012800000"
+								},
+								{
+									"key": "end",
+									"value": "1656604799999"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-Content-Of-A-Year-In-Limited-Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{filter}}?start=1654012800000&end=1656604799999&classes=%5B%221bcddudhmh%22%2C%22hc5g66kviq%22%2C%228s0p77c323%22%2C%220fnhbcle6hg%22%5D",
+							"protocol": "http",
+							"host": [
+								"{{filter}}"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1654012800000"
+								},
+								{
+									"key": "end",
+									"value": "1656604799999"
+								},
+								{
+									"key": "classes",
+									"value": "%5B%221bcddudhmh%22%2C%22hc5g66kviq%22%2C%228s0p77c323%22%2C%220fnhbcle6hg%22%5D"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get-All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/all",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All-With-Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/allWithClass",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"allWithClass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set('curr_time',new Date().valueOf());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\":\"8s0p77c323\",\n    \"amount\":2333\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/insert",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All-Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/allClass",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"allClass"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "filter",
+			"value": "localhost:3000/filter",
+			"type": "string"
+		}
+	]
+}
