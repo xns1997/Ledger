@@ -75,10 +75,8 @@ app.post('/insert',(req,res)=>{
     });
 });
 app.get('/filter',(req,res)=>{
-    console.log(req.query)
     bill.findByTimeRange(req.query,(err,rows)=>{
         let flag = 0;
-        // console.log(rows);
         if(err !== null){
             console.log(err);
             flag = 1;
@@ -96,8 +94,6 @@ app.get('/filter',(req,res)=>{
         }
         
     });
-    // res.send('aloha');
-
 })
 app.get('/count',(req,res)=>{
     bill.countRows((err,data)=>{

@@ -55,7 +55,6 @@ class Bill{
         db.get(sql,dbRes);
     }
     static findByTimeRange(body,dbRes){
-        console.log(body.classes);
         let sql = `
             select
                 b.time,b.category,c.name,b.amount,c.type
